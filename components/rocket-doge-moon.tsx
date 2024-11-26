@@ -13,6 +13,7 @@ import {
   TrendingUp,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { animated, config, useSpring } from "react-spring";
@@ -165,6 +166,16 @@ export default function RocketDogeMoonLanding() {
           Fair Launch on MultiversX via FunDex! 🌟
         </p>
       </animated.div>
+
+      <div className="max-w-md mx-auto mb-8">
+        <Image
+          src="/RocketDogeMoon.webp"
+          alt="RocketDogeMoon Logo"
+          className="w-full h-auto rounded-lg shadow-2xl animate-pulse"
+          width={500}
+          height={500}
+        />
+      </div>
 
       <div className="max-w-4xl mx-auto bg-black/30 backdrop-blur-md rounded-lg p-8 mb-8">
         <h2 className="text-5xl font-bold mb-4 text-center animate-rainbow">

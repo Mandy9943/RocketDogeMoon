@@ -16,6 +16,12 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "RocketDogeMoon",
   description: "The MOST DEGEN coin in the Multiversx! 🌟",
+
+  openGraph: {
+    title: "RocketDogeMoon",
+    description: "The MOST DEGEN coin in the Multiversx! 🌟",
+    images: ["/RocketDogeMoon.webp"],
+  },
 };
 
 export default function RootLayout({
