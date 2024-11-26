@@ -5,11 +5,12 @@ import {
   CreditCard,
   Dog,
   DollarSign,
+  Lock,
   Moon,
   Rocket,
+  Shield,
   Star,
   TrendingUp,
-  Trophy,
   Zap,
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -18,7 +19,7 @@ import { animated, config, useSpring } from "react-spring";
 
 export default function RocketDogeMoonLanding() {
   const [buyClicks, setBuyClicks] = useState(0);
-  const [price, setPrice] = useState(0.00001234);
+  const [price, setPrice] = useState(0.000001);
   const [showConfetti, setShowConfetti] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
 
@@ -90,7 +91,7 @@ export default function RocketDogeMoonLanding() {
         await next({ transform: "translateY(-100vh)" });
       }
     },
-    config: { duration: 10000, loop: true },
+    config: { duration: 10000 },
   });
 
   // Star twinkle animation
@@ -102,8 +103,24 @@ export default function RocketDogeMoonLanding() {
         await next({ opacity: 0.2 });
       }
     },
-    config: { duration: 1000, loop: true },
+    config: { duration: 1000 },
   });
+
+  useEffect(() => {
+    // Update percentage element after initial render
+    const updatePercentage = () => {
+      const percentageElement = document.getElementById("price-percentage");
+      if (percentageElement) {
+        percentageElement.textContent = `+${(Math.random() * 1000).toFixed(
+          2
+        )}%`;
+      }
+    };
+
+    updatePercentage();
+    const interval = setInterval(updatePercentage, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-600 via-pink-500 to-yellow-500 text-white p-8 overflow-hidden relative">
@@ -114,7 +131,9 @@ export default function RocketDogeMoonLanding() {
       <div className="fixed top-0 left-0 right-0 overflow-hidden whitespace-nowrap bg-black py-2 z-50">
         <div className="animate-marquee inline-block">
           {Array(10)
-            .fill("🚀 RocketDogeMoon to $1! 💎🙌 Buy now or cry later! 🐶🌙💥 ")
+            .fill(
+              "🚀 Fair Launch on FunDex! 💎 No Team Allocation! 🔒 Safe & Secure! "
+            )
             .map((text, index) => (
               <span
                 key={index}
@@ -140,25 +159,33 @@ export default function RocketDogeMoonLanding() {
 
       <animated.div style={floatAnimation} className="text-center mb-8 mt-16">
         <h1 className="text-7xl font-bold mb-4 text-yellow-300 drop-shadow-lg animate-neon">
-          🚀🐕🌕 RocketDogeMoon (RDM)
+          🚀 RocketDogeMoon (RDM)
         </h1>
         <p className="text-3xl mb-4 animate-bounce font-extrabold text-white">
-          The MOST DEGEN coin in the UNIVERSE! 🌟
+          Fair Launch on MultiversX via FunDex! 🌟
         </p>
       </animated.div>
 
-      <div className="max-w-4xl mx-auto bg-black/30 backdrop-blur-md rounded-lg p-8 mb-8 transform hover:scale-105 transition-transform duration-300 border-2 border-yellow-300">
+      <div className="max-w-4xl mx-auto bg-black/30 backdrop-blur-md rounded-lg p-8 mb-8">
         <h2 className="text-5xl font-bold mb-4 text-center animate-rainbow">
           Why RocketDogeMoon?
         </h2>
         <ul className="list-none text-2xl space-y-4">
           <li className="flex items-center">
             <Rocket className="mr-2 text-yellow-300 animate-pulse" size={32} />{" "}
-            Guaranteed to moon (not financial advice) 🚀🌙
+            100% Fair Launch on FunDex - No Presale, No Team Allocation! 🚀
+          </li>
+          <li className="flex items-center">
+            <Lock className="mr-2 text-yellow-300 animate-bounce" size={32} />{" "}
+            Liquidity Automatically Locked on OneDex 🔒
+          </li>
+          <li className="flex items-center">
+            <Shield className="mr-2 text-yellow-300 animate-spin" size={32} />{" "}
+            Anti-Rug Protection via FunDex Smart Contracts ✅
           </li>
           <li className="flex items-center">
             <Dog className="mr-2 text-yellow-300 animate-bounce" size={32} />{" "}
-            Cuter than your ex's puppy AND your current crush 😍🐶
+            Cuter than your ex&apos;s puppy AND your current crush 😍🐶
           </li>
           <li className="flex items-center">
             <Moon className="mr-2 text-yellow-300 animate-spin" size={32} />{" "}
@@ -211,68 +238,72 @@ export default function RocketDogeMoonLanding() {
         )}
       </div>
 
-      <div className="max-w-4xl mx-auto bg-black/30 backdrop-blur-md rounded-lg p-8 mb-8 transform hover:rotate-1 transition-transform duration-300 border-2 border-yellow-300">
+      <div className="max-w-4xl mx-auto bg-black/30 backdrop-blur-md rounded-lg p-8 mb-8">
         <h2 className="text-5xl font-bold mb-4 text-center animate-rainbow">
           RDM Tokenomics
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-purple-700/50 p-4 rounded-lg text-center transform hover:scale-110 transition-transform duration-300">
+          <div className="bg-purple-700/50 p-4 rounded-lg text-center">
             <DollarSign
               className="mx-auto mb-2 text-yellow-300 animate-bounce"
               size={48}
             />
-            <h3 className="text-2xl font-bold mb-2">1 Quadrillion Supply</h3>
-            <p className="text-lg">Because more is ALWAYS better! 🤑</p>
+            <h3 className="text-2xl font-bold mb-2">1 Billion Supply</h3>
+            <p className="text-lg">Total supply: 1,000,000,000 RDM</p>
           </div>
-          <div className="bg-purple-700/50 p-4 rounded-lg text-center transform hover:scale-110 transition-transform duration-300">
+          <div className="bg-purple-700/50 p-4 rounded-lg text-center">
             <Coins
               className="mx-auto mb-2 text-yellow-300 animate-pulse"
               size={48}
             />
-            <h3 className="text-2xl font-bold mb-2">99% Burn</h3>
-            <p className="text-lg">
-              We'll burn 99% of the supply... eventually! 🔥
-            </p>
+            <h3 className="text-2xl font-bold mb-2">Fair Distribution</h3>
+            <p className="text-lg">100% via FunDex Bonding Curve 📈</p>
           </div>
-          <div className="bg-purple-700/50 p-4 rounded-lg text-center transform hover:scale-110 transition-transform duration-300">
-            <Trophy
+          <div className="bg-purple-700/50 p-4 rounded-lg text-center">
+            <Lock
               className="mx-auto mb-2 text-yellow-300 animate-spin"
               size={48}
             />
-            <h3 className="text-2xl font-bold mb-2">1% for Devs</h3>
-            <p className="text-lg">We promise not to dump... much. 😇</p>
+            <h3 className="text-2xl font-bold mb-2">Locked Liquidity</h3>
+            <p className="text-lg">Auto-locked on OneDex at $5000 MC 🔒</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto bg-black/30 backdrop-blur-md rounded-lg p-8 mb-8 transform hover:-rotate-1 transition-transform duration-300 border-2 border-yellow-300">
+      <div className="max-w-4xl mx-auto bg-black/30 backdrop-blur-md rounded-lg p-8 mb-8">
         <h2 className="text-5xl font-bold mb-4 text-center animate-rainbow">
-          RDM Roadmap to GLORY
+          How to Buy RDM
         </h2>
         <div className="space-y-4">
           <div className="flex items-center space-x-4 animate-pulse">
             <div className="w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center font-bold text-black text-2xl">
               1
             </div>
-            <p className="text-2xl">Launch token (You are here) 🚀</p>
+            <p className="text-2xl">
+              Visit FunDex and connect your MultiversX wallet 👛
+            </p>
           </div>
           <div className="flex items-center space-x-4 animate-bounce">
             <div className="w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center font-bold text-black text-2xl">
               2
             </div>
-            <p className="text-2xl">Create dank memes 🐸</p>
+            <p className="text-2xl">Buy RDM on the Bonding-Curve 📈</p>
           </div>
           <div className="flex items-center space-x-4 animate-spin">
             <div className="w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center font-bold text-black text-2xl">
               3
             </div>
-            <p className="text-2xl">??? 🤔</p>
+            <p className="text-2xl">
+              Hold until $5000 MC for OneDex listing 🚀
+            </p>
           </div>
           <div className="flex items-center space-x-4 animate-pulse">
             <div className="w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center font-bold text-black text-2xl">
               4
             </div>
-            <p className="text-2xl">PROFIT!!! 💰🤑💎</p>
+            <p className="text-2xl">
+              Trade freely on OneDex with locked liquidity 🔄
+            </p>
           </div>
         </div>
       </div>
@@ -281,9 +312,7 @@ export default function RocketDogeMoonLanding() {
         <p className="text-3xl font-mono animate-pulse text-center">
           RDM Price:{" "}
           <span className="text-yellow-300 font-bold">${price.toFixed(8)}</span>
-          <span className="ml-2 text-green-400">
-            +{(Math.random() * 1000).toFixed(2)}%
-          </span>
+          <span className="ml-2 text-green-400" id="price-percentage"></span>
           <span className="ml-2 animate-ping inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75"></span>
         </p>
       </div>
@@ -291,9 +320,8 @@ export default function RocketDogeMoonLanding() {
       <animated.div style={rocketAnimation} className="absolute top-0 right-0">
         <span className="text-9xl">🚀</span>
       </animated.div>
-
       <animated.div
-        style={coinProps}
+        style={{ ...coinProps }}
         className="fixed left-0 w-full pointer-events-none"
       >
         <div className="flex justify-between">
