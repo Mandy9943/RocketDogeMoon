@@ -270,20 +270,26 @@ export default function RocketDogeMoonLanding() {
       </div>
 
       <div className="text-center mb-4 md:mb-8">
-        <animated.button
-          style={buttonProps}
-          onClick={handleBuyClick}
-          className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 md:py-6 px-6 md:px-12 rounded-full text-xl md:text-4xl shadow-lg animate-jello relative overflow-hidden group"
+        <a
+          href="https://pump.fun/coin/CXemw9dViRWqQJKiRXeWiK5xC2zG4jLMv3B8nxnGpump"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <span className="relative z-10">
-            {buyClicks === 0
-              ? "APE IN NOW!"
-              : buyClicks < 5
-              ? "MORE!"
-              : "YOLO!"}
-          </span>
-          <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        </animated.button>
+          <animated.button
+            style={buttonProps}
+            onClick={handleBuyClick}
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 md:py-6 px-6 md:px-12 rounded-full text-xl md:text-4xl shadow-lg animate-jello relative overflow-hidden group"
+          >
+            <span className="relative z-10">
+              {buyClicks === 0
+                ? "APE IN NOW!"
+                : buyClicks < 5
+                ? "MORE!"
+                : "YOLO!"}
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </animated.button>
+        </a>
         {buyClicks >= 10 && (
           <p className="mt-4 text-lg md:text-2xl animate-bounce text-yellow-300 font-bold">
             🚨 WHALE ALERT! 🚨 Save some for the rest of us!
@@ -337,7 +343,16 @@ export default function RocketDogeMoonLanding() {
               1
             </div>
             <p className="text-sm md:text-2xl">
-              Visit Pump.fun and connect your Solana wallet 👛
+              Visit{" "}
+              <a
+                href="https://pump.fun/coin/CXemw9dViRWqQJKiRXeWiK5xC2zG4jLMv3B8nxnGpump"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-yellow-300 hover:text-yellow-400 underline"
+              >
+                Pump.fun
+              </a>{" "}
+              and connect your Solana wallet 👛
             </p>
           </div>
           <div className="flex items-center space-x-2 md:space-x-4 animate-bounce">
